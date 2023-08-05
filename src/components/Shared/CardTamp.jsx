@@ -1,5 +1,7 @@
+import React from 'react';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import { FaCalendarAlt, FaEye, FaRegCalendar, FaRegEye, FaShare, FaShareAlt } from 'react-icons/fa';
+import { FaEllipsisH, FaEllipsisV, FaEye, FaRegCalendar, FaRegEye, FaShareAlt } from 'react-icons/fa';
 
 const CardTamp = ({ data }) => {
   return (
@@ -15,20 +17,38 @@ const CardTamp = ({ data }) => {
         </p>
         <Card.Title>{data?.title}</Card.Title>
         <Card.Text>
-          {
-            data?.category === 'Event' ? <div>
-              <div className='d-flex fw-semibold  '>
+          <div className='d-flex justify-content-between  '>
+            <div >
 
-              <p className='me-5 d-flex align-items-center '> <FaRegCalendar className='me-2'></FaRegCalendar> {data?.date}</p>
-              <p>  {data?.location}</p>
+            {data?.category === 'Event' ? (
+              <div>
+                <div className='d-flex fw-semibold  '>
+                  <p className='me-5 d-flex align-items-center '>
+                    <FaRegCalendar className='me-2' /> {data?.date}
+                  </p>
+                  <p> {data?.location}</p>
+                </div>
+                <button className='fw-bold rounded w-100  ' style={{ border: '1px solid #A9AEB8', color: '#E56135',  backgroundColor: '#FFF' }}>Visit website</button>
               </div>
-              <button className='fw-bold' style={{ border : '1px solid #A9AEB8', color : '#E56135', width : '100%', backgroundColor : '#FFF'}}>Visit website</button>
-            </div> : data?.category === 'Job' ? <div>
-              <p>Company Name</p>
-              <p>location</p>
-              <button className=' btn-outline-success  '>button</button>
-            </div> : <p>{data?.description}</p>
-          }
+            ) : data?.category === 'Job' ? (
+              <div>
+                <p>{data?.companyName}</p>
+                <p>{data?.location}</p>
+                <button className='fw-bold rounded     ' style={{ border: '1px solid #A9AEB8', color: '#02B875', backgroundColor: '#FFF' }}>Apply on Timesjobs</button>
+              </div>
+            ) : (
+              <p>{data?.description}</p>
+            )}
+            </div>
+
+            <div >
+              <DropdownButton id="" title={<FaEllipsisH />} variant='' >
+                <Dropdown.ItemText>Edit</Dropdown.ItemText>
+                <Dropdown.Item>Report</Dropdown.Item>
+                <Dropdown.Item>Option-3</Dropdown.Item>
+              </DropdownButton>
+            </div>
+          </div>
         </Card.Text>
         <div className='d-flex justify-content-between align-items-center'>
           <div className='d-flex align-items-center'>
