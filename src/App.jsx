@@ -18,7 +18,13 @@ function App() {
     <>
       <NavMenu></NavMenu>
       <Banner></Banner>
+
+      <div className='container'>
+
+
       <ItemTab></ItemTab>
+
+      </div>
     </>
   )
 }
